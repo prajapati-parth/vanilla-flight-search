@@ -1,2 +1,11 @@
 @import './views/styles/header.scss';
 @import './views/styles/search-box.scss';
+@import './views//styles/search-results.scss';
+
+.autocomplete-suggestions {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(243, 243, 243);
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem;
+}

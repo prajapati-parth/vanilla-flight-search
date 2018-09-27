@@ -1,19 +1,23 @@
 import { SEARCH } from './actions';
 
 const defaultState = {
-  searchLabel: '',
+  origin: '',
+  dest: '',
   departureDate: '',
-  returnDate: ''
+  returnDate: '',
+  searchResults: []
 };
 
 export default (state = defaultState, action) => {
   switch (action.type) {
     case SEARCH:
-      const { searchLabel, departureDate, returnDate } = action.payload;
+      const { origin, dest, departureDate, returnDate, searchResults } = action.payload;
       return Object.assign({}, state, {
-        searchLabel,
+        origin,
+        dest,
         departureDate,
-        returnDate
+        returnDate,
+        searchResults
       });
     default:
       return state;
