@@ -1,4 +1,5 @@
 import copy from '../utils/copy-text';
+import { SEARCH } from '../redux/actions';
 
 const { originCityPlaceholder, destinationCityPlaceholder,
   departureDatePlaceholder, returnDatePlaceholder, passengersInputPlaceholder,
@@ -13,19 +14,22 @@ export default `
       </div>
     </nav>
     <div class="tab-content">
-      <input id="origin-city-input" type="text" class="form-control placesearch" placeholder="${originCityPlaceholder}" />
-      <input id="destination-city-input" type="text" class="form-control placesearch" placeholder="${destinationCityPlaceholder}" />
+      <form id='search-form'>
+        <input id="origin-city-input" type="text" class="form-control placesearch" placeholder="${originCityPlaceholder}" />
+        <input id="destination-city-input" type="text" class="form-control placesearch" placeholder="${destinationCityPlaceholder}" />
 
-      <input id="departure-date-input" type="text" class="form-control placesearch" placeholder="${departureDatePlaceholder}" />
-      <input id="return-date-input" type="text" class="form-control placesearch d-none" placeholder="${returnDatePlaceholder}" />
+        <input id="departure-date-input" type="text" class="form-control placesearch" placeholder="${departureDatePlaceholder}" />
+        <input id="return-date-input" type="text" class="form-control placesearch d-none" placeholder="${returnDatePlaceholder}" />
 
-      <input id="passengers-input" type="number" min="1" class="form-control placesearch" placeholder="${passengersInputPlaceholder}" />
-    </div>
-    <button id="flight-search" type="button" class="btn btn-primary">${searchButtonLabel}</button>
+        <input id="passengers-input" type="number" min="1" class="form-control placesearch" placeholder="${passengersInputPlaceholder}" />\
+      </form>
+
+      <button id="flight-search" type="button" class="btn btn-primary">${searchButtonLabel}</button>
+      </div>
   </div>
 `;
 
-export const attachEvents_searchBox = () => {
+export const attachEvents_searchBox = (store) => {
   document.getElementById('departure-date-input').DatePickerX.init({
     minDate: new Date()
   });
@@ -67,5 +71,14 @@ export const attachEvents_searchBox = () => {
       maxDate: document.getElementById('return-date-input')
     });
     document.getElementById('departure-date-input').DatePickerX.setValue(departureSelectedDate);
+  });
+
+  document.getElementById('flight-search').addEventListener('click', (e) => {
+    store.dispatch({
+      type: SEARCH,
+      payload: {
+        searchLabel: document.getElementById('origin-city-input').value
+      }
+    })
   });
 }
