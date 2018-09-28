@@ -7,5 +7,12 @@ export default {
     returnDatePlaceholder: 'Return Date',
     passengersInputPlaceholder: 'Passengers',
     searchButtonLabel: 'Search'
+  },
+  searchResults: {
+    noSearchMessage: 'Search for a flight',
+    noResultsMessage: 'No flights found!'
+  },
+  searchCard: {
+    bookButtonText: 'Book this flight'
   }
 }

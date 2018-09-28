@@ -1,6 +1,11 @@
-export default ({origin, dest, departureDate, returnDate, searchResults}) => {
+import searchCard from './search-card';
+import copy from '../utils/copy-text';
+
+const { noResultsMessage, noSearchMessage } = copy.searchResults;
+
+export default ({origin, dest, departureDate, returnDate, searchResults, showNoSearchMessage}) => {
   return `
-    <div id='search-results-container'>
+    <div id='search-results-container' class='search-results-container'>
       <div class='route-container'>
         <div class='row'>
           <div class='col-lg-8'>
@@ -16,18 +21,25 @@ export default ({origin, dest, departureDate, returnDate, searchResults}) => {
         </div>
       </div>
 
-      <div class='results-container'>
+      
         ${
           searchResults.length > 0
-            ? searchResults.reduce((acc, element) => {
-               return `${acc}
-                <div>${element.OriginName}</div>
-                <div>${element.DestName}</div>
-              `
-            }, '')
-            : ''
+            ? `
+            <div class='results-container'>
+              ${
+                searchResults.reduce((acc, element) => {
+                  return `${acc}
+                    ${searchCard(element)}
+                  `
+                }, '')
+              }
+            </div>`
+            : `
+              <div class='results-none-container'>
+                <h4>${showNoSearchMessage ? noSearchMessage : noResultsMessage}</h4>
+              </div>
+            `
         }
-      </div>
     </div>
   `;
 };

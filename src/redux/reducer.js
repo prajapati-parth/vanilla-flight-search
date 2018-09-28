@@ -5,7 +5,8 @@ const defaultState = {
   dest: '',
   departureDate: '',
   returnDate: '',
-  searchResults: []
+  searchResults: [],
+  showNoSearchMessage: true
 };
 
 export default (state = defaultState, action) => {

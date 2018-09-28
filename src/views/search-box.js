@@ -21,8 +21,8 @@ export default `
     </nav>
     <div class="tab-content">
       <form id='search-form'>
-        <input value="LAS" id="origin-city-input" type="text" class="form-control placesearch" placeholder="${originCityPlaceholder}" />
-        <input value="ABQ" id="destination-city-input" type="text" class="form-control placesearch" placeholder="${destinationCityPlaceholder}" />
+        <input id="origin-city-input" type="text" class="form-control placesearch" placeholder="${originCityPlaceholder}" />
+        <input id="destination-city-input" type="text" class="form-control placesearch" placeholder="${destinationCityPlaceholder}" />
 
         <input id="departure-date-input" type="text" class="form-control placesearch" placeholder="${departureDatePlaceholder}" />
         <input id="return-date-input" type="text" class="form-control placesearch d-none" placeholder="${returnDatePlaceholder}" />
@@ -117,4 +117,20 @@ export const attachEvents_searchBox = (store) => {
 
     store.dispatch(searchFlight(origin, dest, departureDate, returnDate));
   });
-}
+
+  document.getElementById('origin-city-input').addEventListener('blur', (e) => {
+    if (!isValidValue(e.target.value)) {
+      e.target.value = '';
+    }
+  });
+
+  document.getElementById('destination-city-input').addEventListener('blur', (e) => {
+    if (!isValidValue(e.target.value)) {
+      e.target.value = '';
+    }
+  })
+};
+
+const isValidValue = (value) => {
+  return searchOptions.indexOf(value) >= 0;
+};

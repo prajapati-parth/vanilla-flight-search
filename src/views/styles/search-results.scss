@@ -1,5 +1,14 @@
-.route-container {
+.search-results-container {
   .route {
     font-size: 34px;
+  }
+  .results {
+    &-container {
+      border-top: 1px solid #f3f3f3;
+      padding-top: 14px;
+    }
+    &-none-container {
+      text-align: center;
+    }
   }
 }
