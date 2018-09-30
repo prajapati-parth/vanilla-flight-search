@@ -1,9 +1,10 @@
 import searchCard from './search-card';
+import loader from './loader';
 import copy from '../utils/copy-text';
 
 const { noResultsMessage, noSearchMessage } = copy.searchResults;
 
-export default ({origin, dest, departureDate, returnDate, searchResults, showNoSearchMessage}) => {
+export default ({origin, dest, departureDate, returnDate, searchResults, showNoSearchMessage, isResultLoading}) => {
   return `
     <div id='search-results-container' class='search-results-container'>
       <div class='route-container'>
@@ -21,25 +22,25 @@ export default ({origin, dest, departureDate, returnDate, searchResults, showNoS
         </div>
       </div>
 
+      ${
+        isResultLoading ? loader : ''
+      }
       
-        ${
-          searchResults.length > 0
-            ? `
-            <div class='results-container'>
-              ${
-                searchResults.reduce((acc, element) => {
-                  return `${acc}
-                    ${searchCard(element)}
-                  `
-                }, '')
-              }
-            </div>`
-            : `
-              <div class='results-none-container'>
-                <h4>${showNoSearchMessage ? noSearchMessage : noResultsMessage}</h4>
-              </div>
-            `
-        }
+      ${
+        searchResults.length > 0
+          ? `<div class='results-container'>
+            ${
+              searchResults.reduce((acc, element) => {
+                return `${acc}
+                  ${searchCard(element)}
+                `
+              }, '')
+            }
+          </div>`
+          : `<div class='results-none-container'>
+            <h4>${showNoSearchMessage ? noSearchMessage : noResultsMessage}</h4>
+          </div>`
+      }
     </div>
   `;
 };

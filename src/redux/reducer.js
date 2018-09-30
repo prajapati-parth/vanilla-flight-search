@@ -1,4 +1,4 @@
-import { SEARCH } from './actions';
+import { SEARCH, TOGGLE_RESULT_LOADING } from './actions';
 
 const defaultState = {
   origin: '',
@@ -6,7 +6,8 @@ const defaultState = {
   departureDate: '',
   returnDate: '',
   searchResults: [],
-  showNoSearchMessage: true
+  showNoSearchMessage: true,
+  isResultLoading: false
 };
 
 export default (state = defaultState, action) => {
@@ -19,6 +20,10 @@ export default (state = defaultState, action) => {
         departureDate,
         returnDate,
         searchResults
+      });
+    case TOGGLE_RESULT_LOADING:
+      return Object.assign({}, state, {
+        isResultLoading: !state.isResultLoading
       });
     default:
       return state;

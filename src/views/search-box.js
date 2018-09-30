@@ -1,5 +1,5 @@
 import copy from '../utils/copy-text';
-import { searchFlight } from '../redux/actions';
+import { searchFlight, TOGGLE_RESULT_LOADING } from '../redux/actions';
 
 const { originCityPlaceholder, destinationCityPlaceholder,
   departureDatePlaceholder, returnDatePlaceholder, passengersInputPlaceholder,
@@ -42,7 +42,7 @@ export const attachEvents_searchBox = (store) => {
 
   new autoComplete({
     selector: document.getElementById('origin-city-input'),
-    minChars: 2,
+    minChars: 1,
     source: function(term, suggest){
         term = term.toLowerCase();
         var choices = searchOptions;
@@ -55,7 +55,7 @@ export const attachEvents_searchBox = (store) => {
 
   new autoComplete({
     selector: document.getElementById('destination-city-input'),
-    minChars: 2,
+    minChars: 1,
     source: function(term, suggest){
         term = term.toLowerCase();
         var choices = searchOptions;
@@ -107,6 +107,12 @@ export const attachEvents_searchBox = (store) => {
   });
 
   document.getElementById('flight-search').addEventListener('click', (e) => {
+    // show loader
+    store.dispatch({
+      type: TOGGLE_RESULT_LOADING
+    });
+  
+    // prepare data
     const origin = document.getElementById('origin-city-input').value;
     const dest = document.getElementById('destination-city-input').value;
     const departureDate = document.getElementById('departure-date-input').DatePickerX.getValue();
