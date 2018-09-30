@@ -6,7 +6,7 @@ const { noResultsMessage, noSearchMessage } = copy.searchResults;
 
 export default ({origin, dest, departureDate, returnDate, searchResults, showNoSearchMessage, isResultLoading}) => {
   return `
-    <div id='search-results-container' class='search-results-container'>
+    <div class='search-results-container'>
       <div class='route-container'>
         <div class='row'>
           <div class='col-lg-8'>

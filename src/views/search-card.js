@@ -1,6 +1,6 @@
 import copy from '../utils/copy-text';
 
-export default ({towardsJourney, returnJourney, price, FlightNum, Origin, Dest, DepTime, ArrTime}) => {
+export default ({towardsJourney, returnJourney}) => {
   return `
     <div class='search-card-container'>
       <div class="card" style="width: 18rem;">

@@ -14,5 +14,8 @@ export default {
   },
   searchCard: {
     bookButtonText: 'Book this flight'
+  },
+  seachFilter: {
+    title: 'Refine flight search'
   }
 }
