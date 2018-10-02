@@ -10,8 +10,7 @@ A web app without any frameworks.
 - Has separate components
 - Can easily add vanilla JS external plugins (can add it using script tag in html or import it to any of the modules)
 
-Did my code make a difference to your project? Consider buying me a coffee!
-<a href="https://www.buymeacoffee.com/kTI9b0xj1" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+Did my code make a difference to your project? Consider buying me a coffee!<br/><a href="https://www.buymeacoffee.com/kTI9b0xj1" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
 ## Other supporting applictions
 1. API server using Heroku
