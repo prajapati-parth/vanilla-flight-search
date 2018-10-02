@@ -15,7 +15,7 @@ Did my code make a difference to your project? Consider buying me a coffee!<br/>
 ## Other supporting applictions
 1. API server using Heroku
     - Url: https://flight-search-api.herokuapp.com/
-2. Uses (My JSON Server)[https://my-json-server.typicode.com/] for the API
+2. Uses [My JSON Server](https://my-json-server.typicode.com/) for the API
 
 ## Side note
 - Since that static data returned from the API is limited, please consider searching using the following airport codes
